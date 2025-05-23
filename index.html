@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.5 Anos de Amor - Nosso Aniversário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f5;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+        
+        .dancing-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .heart-beat {
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .modal {
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #f43f5e;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 15px;
+            width: 1px;
+            height: calc(100% - 15px);
+            background: #f43f5e;
+        }
+        
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            opacity: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-pink-500 to-rose-500 text-white py-16 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-white opacity-10"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold dancing-font mb-4">1.5 Anos de Amor</h1>
+            <p class="text-xl md:text-2xl mb-6">Celebrando nosso aniversário de namoro</p>
+            <div class="flex justify-center items-center space-x-2">
+                <span class="text-4xl heart-beat text-rose-100"><i class="fas fa-heart"></i></span>
+                <span class="text-3xl dancing-font">12/05/2025</span>
+                <span class="text-4xl heart-beat text-rose-100"><i class="fas fa-heart"></i></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Love Message Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-rose-600 dancing-font mb-8">Para o Amor da Minha Vida</h2>
+            
+            <div class="bg-rose-50 rounded-xl p-8 shadow-lg mb-8 relative">
+                <div class="absolute -top-4 -left-4 w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-quote-left text-rose-500 text-2xl"></i>
+                </div>
+                <p class="text-lg md:text-xl italic mb-6">
+                    "Um ano e meio de risadas, abraços, beijos e momentos inesquecíveis. Cada day ao seu lado é um presente que eu guardo com carinho no meu coração. Você transformou minha vida de uma maneira que eu nunca imaginei ser possível."
+                </p>
+                <div class="text-right">
+                    <p class="font-semibold text-rose-600">- Seu amor</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="bg-pink-50 p-6 rounded-lg shadow">
+                    <div class="text-4xl text-rose-500 mb-4"><i class="fas fa-calendar-heart"></i></div>
+                    <h3 class="text-xl font-bold mb-2">18 Meses</h3>
+                    <p class="text-gray-600">De amor e cumplicidade</p>
+                </div>
+                <div class="bg-pink-50 p-6 rounded-lg shadow">
+                    <div class="text-4xl text-rose-500 mb-4"><i class="fas fa-heartbeat"></i></div>
+                    <h3 class="text-xl font-bold mb-2">547 Dias</h3>
+                    <p class="text-gray-600">De felicidade compartilhada</p>
+                </div>
+                <div class="bg-pink-50 p-6 rounded-lg shadow">
+                    <div class="text-4xl text-rose-500 mb-4"><i class="fas fa-clock"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Infinito</h3>
+                    <p class="text-gray-600">De promessas e sonhos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Photo Gallery Section -->
+    <section class="py-16 px-4 bg-rose-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-rose-600 dancing-font mb-12">Nossos Momentos</h2>
+            
+            <div class="photo-gallery grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+        <img src="imagem-IMG-20240111-WA0013.jpg" alt="Nós dois sorrindo" class="w-full h-64 object-cover">
+    </div>
+    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+        <img src="imagem-IMG-20240825-WA0086.jpg" alt="Deitados juntos" class="w-full h-64 object-cover">
+    </div>
+    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+        <img src="imagem-IMG-20241207-WA0013.jpg" alt="Sorrisos felizes" class="w-full h-64 object-cover">
+    </div>
+</div>
+
+            </div>
+            
+            <!-- Photo Modal -->
+            <div class="modal fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4" id="photoModal">
+                <div class="bg-white rounded-lg max-w-4xl w-full overflow-hidden relative">
+                    <button class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-rose-500" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <img src="" alt="" class="w-full max-h-screen-80 object-contain" id="modalImage">
+                    <div class="p-4 text-center">
+                        <p id="modalCaption" class="text-lg"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Timeline Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-rose-600 dancing-font mb-12">Nossa Linha do Tempo</h2>
+            
+            <div class="relative pl-8">
+                <div class="absolute left-0 top-0 h-full w-1 bg-rose-200"></div>
+                
+                <div class="timeline-item mb-12">
+                    <div class="bg-rose-50 p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center text-white mr-4">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-rose-600">Começo de tudo</h3>
+                        </div>
+                        <p class="text-gray-600">12 de Novembro de 2023 - O dia que você me disse sim e tudo começou.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item mb-12">
+                    <div class="bg-rose-50 p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center text-white mr-4">
+                                <i class="fas fa-glass-cheers"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-rose-600">Primeiro Beijo</h3>
+                        </div>
+                        <p class="text-gray-600">11 de Janeiro de 2024 - Superando a minha timidez, nosso primeiro beijo que marcou para sempre minha vida.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="bg-rose-50 p-6 rounded-lg shadow">
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center text-white mr-4">
+                                <i class="fas fa-birthday-cake"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-rose-600">1.5 Anos de Namoro</h3>
+                        </div>
+                        <p class="text-gray-600">12 de Maio de 2025 - Um ano e meio de amor, cumplicidade e sonhos compartilhados. E que venham muitos mais!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Love Letter Section -->
+    <section class="py-16 px-4 bg-rose-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-rose-600 dancing-font mb-12">Minha Carta de Amor</h2>
+            
+            <div class="bg-white p-8 rounded-lg shadow-lg relative">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 to-rose-500"></div>
+                <div class="border-l-4 border-rose-400 pl-4">
+                    <p class="mb-4">Meu amor,</p>
+                    <p class="mb-4">Hoje completamos um ano e meio juntos e eu não poderia estar mais feliz por ter você na minha vida. Cada moment ao seu lado é especial, cada risada, cada conversa, cada olhar.</p>
+                    <p class="mb-4">Lembro como se fosse hoje do nosso primeiro encontro, da primeira vez que nossas mãos se tocaram, do primeiro beijo que mudou tudo. Você trouxe luz para minha vida de uma forma que eu nem sabia que era possível.</p>
+                    <p class="mb-4">Nesses 18 meses, aprendi o verdadeiro significado do amor. Aprendi que amar é cuidar, é respeitar, é estar presente nos bons e nos maus momentos. E você me ensinou tudo isso com seu jeito único e especial.</p>
+                    <p class="mb-4">Quero que saiba que eu te amo mais do que palavras podem expressar. Você é a pessoa que eu escolhi para compartilhar minha vida e espero que possamos comemorar muitos outros aniversários juntos.</p>
+                    <p>Para sempre seu,</p>
+                    <p class="font-bold mt-4">Seu amor</p>
+                </div>
+                <div class="absolute bottom-4 right-4 text-rose-400 text-6xl opacity-20">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Love Test Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-rose-600 dancing-font mb-8">Nosso Teste de Amor</h2>
+            <p class="text-lg mb-8">Vamos ver o quanto nos conhecemos?</p>
+            
+            <div class="bg-rose-50 rounded-xl p-8 shadow-lg max-w-2xl mx-auto">
+                <div class="mb-6">
+                    <label for="question1" class="block text-left font-semibold mb-2 text-rose-600">1. Qual foi nosso primeiro encontro?</label>
+                    <select id="question1" class="w-full p-3 rounded-lg border border-rose-200 focus:ring-2 focus:ring-rose-300 focus:border-rose-300">
+                        <option value="">Selecione uma opção</option>
+                        <option value="wrong">No parque</option>
+                        <option value="correct">No cinema</option>
+                        <option value="wrong">No shopping</option>
+                    </select>
+                </div>
+                
+                <div class="mb-6">
+                    <label for="question2" class="block text-left font-semibold mb-2 text-rose-600">2. Qual é minha comida favorita?</label>
+                    <select id="question2" class="w-full p-3 rounded-lg border border-rose-200 focus:ring-2 focus:ring-rose-300 focus:border-rose-300">
+                        <option value="">Selecione uma opção</option>
+                        <option value="wrong">Lasanha</option>
+                        <option value="correct">Strogonoff</option>
+                        <option value="wrong">Pizza</option>
+                    </select>
+                </div>
+                
+                <div class="mb-6">
+                    <label for="question3" class="block text-left font-semibold mb-2 text-rose-600">3. O que mais amo em você?</label>
+                    <select id="question3" class="w-full p-3 rounded-lg border border-rose-200 focus:ring-2 focus:ring-rose-300 focus:border-rose-300">
+                        <option value="">Selecione uma opção</option>
+                        <option value="wrong">Seu sorriso</option>
+                        <option value="wrong">Seu carinho</option>
+                        <option value="correct">Tudo isso e muito mais</option>
+                    </select>
+                </div>
+                
+                <button id="checkAnswers" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                    Verificar Respostas
+                </button>
+                
+                <div id="result" class="mt-6 hidden">
+                    <div class="p-4 rounded-lg bg-green-100 text-green-800 hidden" id="correctResult">
+                        <i class="fas fa-check-circle mr-2"></i> Parabéns! Você acertou todas! Realmente nos conhecemos muito bem!
+                    </div>
+                    <div class="p-4 rounded-lg bg-red-100 text-red-800 hidden" id="wrongResult">
+                        <i class="fas fa-times-circle mr-2"></i> Oops! Algumas respostas não estão corretas. Vamos conversar mais para nos conhecermos melhor!
+                    </div>
+                </div>;
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final Countdown -->
+    <section class="py-16 px-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold dancing-font mb-8">Próximo Marco do Nosso Amor</h2>
+            <p class="text-xl mb-8">Contagem regressiva para nosso aniversário de 2 anos:</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                    <div class="text-4xl font-bold" id="days">00</div>
+                    <div class="text-sm">Dias</div>
+                </div>
+                <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                    <div class="text-4xl font-bold" id="hours">00</div>
+                    <div class="text-sm">Horas</div>
+                </div>
+                <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                    <div class="text-4xl font-bold" id="minutes">00</div>
+                    <div class="text-sm">Minutos</div>
+                </div>
+                <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                    <div class="text-4xl font-bold" id="seconds">00</div>
+                    <div class="text-sm">Segundos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 px-4 bg-rose-900 text-white text-center">
+        <p class="mb-2">Feito com <i class="fas fa-heart text-rose-300 mx-1"></i> para celebrar nosso amor</p>
+        <p class="text-rose-300">12/05/2025 - 1.5 Anos de Namoro</p>
+    </footer>
+    
+    <script>
+        // Floating Hearts Animation
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const colors = ['#fecdd3', '#fda4af', '#fb7185', '#f43f5e'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Photo Gallery Modal
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('photoModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModal = document.getElementById('closeModal');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                modalImage.src = imgSrc;
+                modalCaption.textContent = item.querySelector('img').alt;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Love Test - Corrigido
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            const q1 = document.getElementById('question1').value;
+            const q2 = document.getElementById('question2').value;
+            const q3 = document.getElementById('question3').value;
+            
+            const resultDiv = document.getElementById('result');
+            const correctResult = document.getElementById('correctResult');
+            const wrongResult = document.getElementById('wrongResult');
+            
+            // Mostrar o container de resultados
+            resultDiv.classList.remove('hidden');
+            
+            // Verificar se todas as respostas estão corretas
+            if (q1 === 'correct' && q2 === 'correct' && q3 === 'correct') {
+                correctResult.classList.remove('hidden');
+                wrongResult.classList.add('hidden');
+            } else {
+                correctResult.classList.add('hidden');
+                wrongResult.classList.remove('hidden');
+            }
+            
+            // Rolar suavemente até o resultado
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const targetDate = new Date('Dec 12, 2025 00:00:00');
+            const diff = targetDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=ramosxzk/namoro" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
